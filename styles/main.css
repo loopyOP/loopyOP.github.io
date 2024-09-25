@@ -6,6 +6,9 @@ body{
     font-family:'Courier New', Courier, monospace;
     background-color: #2d253aff;
 }
+main{
+    min-width: 403px;
+}
 a{
     text-decoration: none;
 }
@@ -16,21 +19,26 @@ header{
     background-position: center;
     height: 150px;
     text-align: center;
-    
+    min-width: 403px;
 }
 header h1{
-    font-size: 50px;
+    font-size: 10vmin;
     backdrop-filter: blur(2px);
     height: 100%;
-    line-height: 150px;
     text-shadow: #eab49fff 1px 2px 3px;
     overflow: clip;
+
+    /* Centering h1 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 nav{
     position: sticky;
     top: -1px;
+    min-width: 403px;
 }
-ul{
+nav ul{
     background-color: #B06F8D;
     text-align: center;
     height: 60px;
@@ -39,7 +47,7 @@ ul{
     border-left: none;
     overflow: clip;
 }
-ul li{
+nav ul li{
     display: inline-block;
     position: relative;
     transform: translate(0, 6%);
@@ -52,7 +60,7 @@ ul li{
     border-radius: 5px;
     border: 2px solid #2d253aff;
 }
-ul li a{
+nav ul li a{
     display: block;
     color: #fcebd5ff;
     font-size: 20px;
@@ -66,3 +74,16 @@ section{
 section#about img{
     margin: 0 auto;
 }
+
+/* For screens smaller than 509px */
+@media screen and (max-width: 509px){
+    nav ul li{
+        margin: 0;
+    }
+}
+
+/* For screens smaller than 403px 
+@media screen and (max-width: 403px){
+
+}
+*/
