@@ -26,6 +26,10 @@ header h1{
     text-shadow: #eab49fff 1px 2px 3px;
     overflow: clip;
 }
+nav{
+    position: sticky;
+    top: -1px;
+}
 ul{
     background-color: #B06F8D;
     text-align: center;
@@ -33,8 +37,6 @@ ul{
     border: 3px solid #482b47ff;
     border-right: none;
     border-left: none;
-    position: sticky;
-    top: 150px;
     overflow: clip;
 }
 ul li{
