@@ -59,12 +59,15 @@ nav ul li{
     margin: 0 20px;
     border-radius: 5px;
     border: 2px solid #2d253aff;
+    box-shadow: 0px 1px;
 }
 nav ul li:hover{
     background-color: rgba(72, 43, 71, 0.784);
 }
 nav ul li:active{
     background-color: #482b47ff;
+    box-shadow: 0px 0px;
+    top: 2px;
 }
 nav ul li a{
     display: block;
