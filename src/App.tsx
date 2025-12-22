@@ -1,6 +1,7 @@
 import { TypeAnimation } from 'react-type-animation';
 import './App.css'
 import Picture from './components/picture';
+import { BaselineEmail, GithubSolid, LinkedinRect } from './components/svg';
 
 function App() {
 
@@ -29,6 +30,9 @@ function App() {
       </div>
       <div id="projects" className="sectionB">
         <h1>Projects</h1>
+        <span className='projectDisplay'>
+
+        </span>
       </div>
       <div id="about" className="sectionA">
         <h1>About Me</h1>
@@ -40,6 +44,12 @@ function App() {
           <Picture src="/graduate.png" alt="Me at graduation"/>
           <Picture src="/vietnam.png" alt="Me on vacation"/>
         </span>
+      </div>
+      <div id="contact" className="sectionB">
+        <h1>Contact</h1>
+        <p><BaselineEmail /> Email: ryan.seth.chan@gmail.com</p>
+        <p><LinkedinRect /> LinkedIn: <a href="https://www.linkedin.com/in/ryan-seth-chan/" target='_blank'>ryan-seth-chan</a></p>
+        <p><GithubSolid /> GitHub: <a href="https://github.com/loopyOP" target='_blank'>loopyOP</a></p>
       </div>
     </>
   )
