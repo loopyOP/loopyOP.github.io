@@ -46,14 +46,6 @@ nav a:active {
   width: 200px;
   object-fit: cover;
   border: 4px solid rgb(49, 255, 152);
-  transition: filter 0.1s;
-}
-#profile-pic:hover {
-  cursor: pointer;
-  filter: drop-shadow(0 0 10px rgb(49, 255, 152));
-}
-#profile-pic:active {
-  filter: drop-shadow(0 0 20px rgb(49, 255, 152));
 }
 #name{
   font-weight: bold;
@@ -87,18 +79,22 @@ nav a:active {
 }
 
 .projectDisplay {
-  display: inline-block;
-  overflow: auto;
-  white-space: nowrap;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: auto;
+  justify-content: space-evenly;
+  gap: 1rem;
+  align-items: center;
   width: 100%;
-  height: 15rem;
+  height: 29rem;
   margin-top: 1rem;
   border: 4px solid #282c34;
   border-radius: 10px;
   background-color: #242424;
 }
 .photoDisplay {
-  display: inline-block;
   overflow: auto;
   white-space: nowrap;
   width: 100%;
@@ -114,17 +110,17 @@ nav a:active {
   background-color: #242424;
 }
 
-@keyframes logo-spin {
+@keyframes pic-glow {
   from {
-    transform: rotate(0deg);
+    filter: drop-shadow(0 0 1px rgb(49, 255, 152));
   }
   to {
-    transform: rotate(360deg);
+    filter: drop-shadow(0 0 12px rgb(49, 255, 152));
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  #profile-pic {
+    animation: pic-glow infinite 2s alternate;
   }
 }

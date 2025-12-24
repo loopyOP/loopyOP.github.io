@@ -2,6 +2,7 @@ import { TypeAnimation } from 'react-type-animation';
 import './App.css'
 import Picture from './components/picture';
 import { BaselineEmail, GithubSolid, LinkedinRect } from './components/svg';
+import ProjectButton from './components/projectButton';
 
 function App() {
 
@@ -21,7 +22,7 @@ function App() {
           wrapper="h1"
           cursor={true}
           repeat={0}
-          speed={8}
+          speed={20}
           style={{fontFamily: 'Consolas', fontSize: '4em'}}
         >
         </TypeAnimation>
@@ -31,7 +32,10 @@ function App() {
       <div id="projects" className="sectionB">
         <h1>Projects</h1>
         <span className='projectDisplay'>
-
+          <ProjectButton icon="/handpeace.svg" label="Personal Website" description="My personal website showcasing my projects and skills." onClick={() => window.open('https://loopyop.github.io', '_blank')} />
+          <ProjectButton icon="/handpeace.svg" label="Personal Website" description="My personal website showcasing my projects and skills." onClick={() => window.open('https://loopyop.github.io', '_blank')} />
+          <ProjectButton icon="/handpeace.svg" label="Personal Website" description="My personal website showcasing my projects and skills." onClick={() => window.open('https://loopyop.github.io', '_blank')} />
+          <ProjectButton icon="/handpeace.svg" label="Personal Website" description="My personal website showcasing my projects and skills." onClick={() => window.open('https://loopyop.github.io', '_blank')} />
         </span>
       </div>
       <div id="about" className="sectionA">

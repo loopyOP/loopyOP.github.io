@@ -1,0 +1,35 @@
+.project-button-div{
+  width: 18rem;
+  height: 15rem;
+  margin: 1rem;
+}
+.project-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 0.25rem;
+}
+.project-button{
+  font-weight: bold;
+  color: white;
+  width: 18rem;
+  height: 15rem;
+  white-space: normal;
+  border-color: white;
+  border-radius: 10%;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.project-button:hover{
+  transform: scale(1.2);
+  box-shadow: 0 0 10px rgb(49, 255, 152);
+  cursor: pointer;
+} 
+.project-button p{
+  font-weight: normal;
+  font-size: 1em;
+  margin: 0.2rem 0;
+}
+.project-button h2{
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 0.2rem 0;
+}
