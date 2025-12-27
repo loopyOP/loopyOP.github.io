@@ -1,4 +1,5 @@
 import type { SVGProps } from 'react'
+import type { JSX } from 'react/jsx-runtime'
 
 export function BaselineEmail(props: SVGProps<SVGSVGElement>) {
   return (
@@ -69,3 +70,12 @@ export function LinkedinRect(props: SVGProps<SVGSVGElement>) {
   )
 }
 
+export const Web = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
+  <svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" {...props}>
+    <g fill="none" stroke="#f9f9f9" strokeWidth="3">
+        <path strokeLinejoin="round" d="M3 24a21 21 0 1 0 42 0a21 21 0 1 0-42 0"></path>
+        <path strokeLinejoin="round" d="M15 24a9 21 0 1 1 18 0a9 21 0 1 1-18 0"></path>
+        <path strokeLinecap="round" d="M4.5 31h39m-39-14h39"></path>
+    </g>
+  </svg>
+)

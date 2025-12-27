@@ -6,13 +6,14 @@ type ProjectButtonProps = {
     description?: string;
     onClick: () => void;
     className?: string;
+    iconSize?: string | number;
 };
 
-export default function ProjectButton({ icon, label, description='', onClick, className = 'project-button' }: ProjectButtonProps) {
+export default function ProjectButton({ icon, label, description='', onClick, className = 'project-button', iconSize }: ProjectButtonProps) {
     return (
         <div className="project-button-div">
             <button className={className} onClick={onClick}>
-                {icon && <img src={icon} alt={`${label} icon`} className="project-icon" />}
+                {icon && <img src={icon} alt={`${label} icon`} className="project-icon" style={iconSize ? { width: iconSize, height: iconSize } : undefined} />}
                 <h2>{label}</h2>
                 <p>{description}</p>
             </button>

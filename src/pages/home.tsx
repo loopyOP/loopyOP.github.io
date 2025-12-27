@@ -5,8 +5,9 @@ import { BaselineEmail, GithubSolid, LinkedinRect } from '../components/svg';
 import ProjectButton from '../components/projectButton';
 import { HashLink } from 'react-router-hash-link';
 
-export function HomePage() {
+const assets = import.meta.glob('../assets/home/*.png', { query: '?url', import: 'default', eager: true }) as Record<string, string>;
 
+export function HomePage() {
   return (
     <>
       <nav>
@@ -16,7 +17,7 @@ export function HomePage() {
           <HashLink to="#contact">Contact</HashLink>
         </div>
       </nav>
-      <img src="/ryanchan.png" id="profile-pic" alt="Profile Picture"/>
+      <img src={assets["../assets/home/ryanchan.png"]} id="profile-pic" alt="Profile Picture"/>
       <div id = "top">
         <TypeAnimation
           sequence={['Hello World!', 1000, 'Welcome to my page!', 1000]}
@@ -33,8 +34,7 @@ export function HomePage() {
       <div id="projects" className="sectionB">
         <h1>Projects</h1>
         <span className='projectDisplay'>
-          <ProjectButton icon="/handpeace.svg" label="Personal Website" description="My personal website showcasing my projects and skills." onClick={() => window.open('/#/projects?q=recipe-browser', '_blank')} />
-          <ProjectButton icon="/handpeace.svg" label="Personal Website" description="My personal website showcasing my projects and skills." onClick={() => window.open('https://loopyop.github.io', '_blank')} />
+          <ProjectButton icon={assets["../assets/home/logo-egg.png"]} iconSize={100} label="Recipe Book" description="A recipe browser that displays information on many recipes." onClick={() => window.open('/#/projects?q=recipe-browser', '_self')} />
           <ProjectButton icon="/handpeace.svg" label="Personal Website" description="My personal website showcasing my projects and skills." onClick={() => window.open('https://loopyop.github.io', '_blank')} />
           <ProjectButton icon="/handpeace.svg" label="Personal Website" description="My personal website showcasing my projects and skills." onClick={() => window.open('https://loopyop.github.io', '_blank')} />
         </span>
@@ -46,13 +46,13 @@ export function HomePage() {
           In my free time, I enjoy coding, gaming, and exploring the latest advancements in tech.
         </p>
         <span className='photoDisplay'>
-          <Picture src="/graduate.png" alt="Me at graduation"/>
-          <Picture src="/vietnam.png" alt="Me on vacation"/>
+          <Picture src={assets["../assets/home/graduate.png"]} alt="Me at graduation"/>
+          <Picture src={assets["../assets/home/vietnam.png"]} alt="Me on vacation"/>
         </span>
       </div>
       <div id="contact" className="sectionB">
         <h1>Contact</h1>
-        <p><BaselineEmail /> Email: ryan.seth.chan@gmail.com</p>
+        <p><BaselineEmail /> Email: <a href="mailto:ryan.seth.chan@gmail.com">ryan.seth.chan@gmail.com</a></p>
         <p><LinkedinRect /> LinkedIn: <a href="https://www.linkedin.com/in/ryan-seth-chan/" target='_blank'>ryan-seth-chan</a></p>
         <p><GithubSolid /> GitHub: <a href="https://github.com/loopyOP" target='_blank'>loopyOP</a></p>
       </div>
