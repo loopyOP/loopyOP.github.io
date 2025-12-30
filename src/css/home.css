@@ -124,6 +124,10 @@ nav a:active {
   box-sizing: border-box;
 }
 
+.about-pic{
+  border: 2px solid rgb(49, 255, 152);
+}
+
 @keyframes pic-glow {
   from {
     filter: drop-shadow(0 0 1px rgb(49, 255, 152));

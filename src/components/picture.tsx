@@ -9,8 +9,25 @@ type PictureProps = {
 
 export default function Picture({ src, alt = '', className = 'about-pic', stretch = false, ...rest }: PictureProps) {
     return (
-        <div style={{ borderColor: 'rgb(49, 255, 152)', borderWidth: '2px', borderStyle: 'solid', display: 'inline-flex', margin: '10px', minWidth: stretch ? undefined : '21rem',  minHeight: '25rem', width: stretch ? undefined : '21rem',  height: '25rem'}}>
-            <img src={src} alt={alt} className={className} {...rest} style={{objectFit: 'cover', width: '100%', height: '25rem'}}/>
+        <div
+            style={{
+                display: 'inline-flex',
+                margin: '10px',
+                minWidth: stretch ? 0 : '21rem',
+                minHeight: '25rem',
+                width: stretch ? 'auto' : '21rem',
+                maxWidth: stretch ? '90vw' : undefined,
+                height: '25rem',
+                flex: '0 0 auto',
+            }}
+        >
+            <img
+                src={src}
+                alt={alt}
+                className={className}
+                {...rest}
+                style={{ objectFit: 'cover', width: '100%', maxWidth: '100%', height: '25rem' }}
+            />
         </div>
     );
 }
