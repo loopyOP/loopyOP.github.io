@@ -36,7 +36,7 @@ function DisplayProject(){
         <>
             <div className='section'>
                 <h1>{query.name}</h1>
-                <h2>Images: <span>(click to open images)</span></h2>
+                <h2 id='topProject'>Images: <span>(click to open images)</span></h2>
                 <div className='project-images'>
                     {images.map((imgSrc, index) => <Zoom classDialog='custom-zoom'>
                         <Picture className="image" stretch = {true} src={imgSrc} alt={`Project ${query.name} image ${index + 1}`} key={index} />
@@ -56,7 +56,13 @@ function DisplayProject(){
 
 export function ProjectPage(){
     useEffect(() => {
+        document.body.classList.remove('page-home');
+        document.body.classList.add('page-projects');
         window.scrollTo(0, 0);
+
+        return () => {
+            document.body.classList.remove('page-projects');
+        };
     }, []);
     return(
         <>

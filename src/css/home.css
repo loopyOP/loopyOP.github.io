@@ -2,11 +2,13 @@
   margin: 0 auto;
   text-align: center;
   align-self: flex-start;
-  background-color: #242424;
 }
 nav{
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   background-color: #282c34;
   padding: 1rem 0;
   margin: 0;
@@ -81,10 +83,12 @@ nav a:active {
   border-bottom: 4px solid rgb(49, 255, 152);
   display: inline-block;
   margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 .sectionA p, .sectionB p {
   font-size: 1.2em;
   line-height: 1.6;
+  margin: 1rem 0;
 }
 
 .projectDisplay {

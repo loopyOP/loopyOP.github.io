@@ -4,10 +4,20 @@ import Picture from '../components/picture';
 import { BaselineEmail, GithubSolid, LinkedinRect } from '../components/svg';
 import ProjectButton from '../components/projectButton';
 import { HashLink } from 'react-router-hash-link';
+import { useEffect } from 'react';
 
 const assets = import.meta.glob('../assets/home/*.png', { query: '?url', import: 'default', eager: true }) as Record<string, string>;
 
 export function HomePage() {
+  useEffect(() => {
+    document.body.classList.remove('page-projects');
+    document.body.classList.add('page-home');
+
+    return () => {
+      document.body.classList.remove('page-home');
+    };
+  }, []);
+
   return (
     <>
       <nav>
@@ -17,7 +27,7 @@ export function HomePage() {
           <HashLink to="#contact">Contact</HashLink>
         </div>
       </nav>
-      <img src={assets["../assets/home/ryanchan.png"]} id="profile-pic" alt="Profile Picture"/>
+      <img src={'/ryanchan.png'} id="profile-pic" alt="Profile Picture"/>
       <div id = "top">
         <TypeAnimation
           sequence={['Hello World!', 1000, 'Welcome to my page!', 1000]}
@@ -34,15 +44,17 @@ export function HomePage() {
       <div id="projects" className="sectionB">
         <h1>Projects</h1>
         <span className='projectDisplay'>
-          <ProjectButton icon={assets["../assets/home/logo-egg.png"]} iconSize={100} label="Recipe Book" description="A recipe browser that displays information on many recipes." onClick={() => window.open('/#/projects?q=recipe-browser', '_self')} />
-          <ProjectButton icon="/handpeace.svg" label="Personal Website" description="My personal website showcasing my projects and skills." onClick={() => window.open('https://loopyop.github.io', '_blank')} />
-          <ProjectButton icon="/handpeace.svg" label="Personal Website" description="My personal website showcasing my projects and skills." onClick={() => window.open('https://loopyop.github.io', '_blank')} />
+          <ProjectButton icon={assets["../assets/home/logo-egg.png"]} iconSize={100} label="Recipe Book" description="A recipe browser that displays information on many recipes." onClick={() => window.open('/#/projects?q=recipe-book', '_self')} />
+          <ProjectButton icon={assets["../assets/home/pantry-guard-logo.png"]} iconSize={100} label="Pantry Guard" description="A mobile app to manage pantry inventory and reduce food waste." onClick={() => window.open('/#/projects?q=pantry-guard', '_self')} />
+          <ProjectButton icon="/handpeace.svg" iconSize={100}label="Portfolio Website" description="My personal website showcasing my projects and skills. (You're viewing it right now!)" onClick={() => window.open('/#/projects?q=portfolio', '_self')} />
         </span>
       </div>
       <div id="about" className="sectionA">
         <h1>About Me</h1>
-        <p>
-          I'm a college graduate and software developer with a passion for creating innovative solutions and learning new technologies. 
+        <p style={{whiteSpace: 'pre-wrap'}}>
+          Hi! I'm Ryan Chan. {'\n'}
+          I graduated cum laude (3.71 GPA) from the University of Texas Permian Basin with a BS in Computer Science while minoring in Mathematics. {'\n'}
+          I'm a software developer with a passion for creating innovative solutions and learning new technologies.{'\n'} 
           In my free time, I enjoy coding, gaming, and exploring the latest advancements in tech.
         </p>
         <span className='photoDisplay'>
