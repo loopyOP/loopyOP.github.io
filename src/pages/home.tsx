@@ -6,7 +6,7 @@ import ProjectButton from '../components/projectButton';
 import { HashLink } from 'react-router-hash-link';
 import { useEffect } from 'react';
 
-const assets = import.meta.glob('../assets/home/*.png', { query: '?url', import: 'default', eager: true }) as Record<string, string>;
+const assets = import.meta.glob('../assets/home/*.{png,svg}', { query: '?url', import: 'default', eager: true }) as Record<string, string>;
 
 export function HomePage() {
   useEffect(() => {
@@ -44,6 +44,7 @@ export function HomePage() {
       <div id="projects" className="sectionB">
         <h1>Projects</h1>
         <span className='projectDisplay'>
+          <ProjectButton icon={assets["../assets/home/music-note.svg"]} iconSize={100} label="MoodCurve" description="Machine Learning analysis of music flow." onClick={() => window.open('/#/projects?q=moodcurve', '_self')} />
           <ProjectButton icon={assets["../assets/home/logo-egg.png"]} iconSize={100} label="Recipe Book" description="A recipe browser that displays information on many recipes." onClick={() => window.open('/#/projects?q=recipe-book', '_self')} />
           <ProjectButton icon={assets["../assets/home/pantry-guard-logo.png"]} iconSize={100} label="Pantry Guard" description="A mobile app to manage pantry inventory and reduce food waste." onClick={() => window.open('/#/projects?q=pantry-guard', '_self')} />
           <ProjectButton icon="/handpeace.svg" iconSize={100}label="Portfolio Website" description="My personal website showcasing my projects and skills. (You're viewing it right now!)" onClick={() => window.open('/#/projects?q=portfolio', '_self')} />

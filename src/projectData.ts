@@ -5,14 +5,14 @@ interface Project {
   links?:{GitHub?: string, Live?: string};
 }
 
-const assets = import.meta.glob('./assets/projects/**/*.png', { query: '?url', import: 'default', eager: true }) as Record<string, string>;
+const assets = import.meta.glob('./assets/projects/**/*.{png,svg}', { query: '?url', import: 'default', eager: true }) as Record<string, string>;
 
 // Helper function to load all images from a specific project folder
 function getImagesFromFolder(folderName: string): string[] {
   return Object.entries(assets)
     .filter(([key]) => key.includes(`/${folderName}/`))
-    .map(([, value]) => value)
-    .sort();
+    .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }))
+    .map(([, value]) => value);
 }
 
 export const data = new Map<string, Project>();
@@ -41,6 +41,14 @@ data.set("portfolio", {
   links:{
     "GitHub": "https://github.com/loopyOP/loopyOP.github.io",
     "Live":"https://loopyop.github.io/"
+  }
+});
+data.set("moodcurve", {
+  name: "MoodCurve",
+  description: "MoodCurve, developed by Levi Cervantes, Ryan Chan, and Love Pavlicek, is a machine learning project that scores how well songs transition from one to the next. Our goal with this project was to turn the subjective idea of \"playlist flow\" into something measurable, so we could identify weak transitions and make data-driven improvements to song ordering.\n\nTechnologies Used:\n- Machine Learning: Python, scikit-learn (Gradient Boosting)\n- Data Processing: Pandas, NumPy\n- Visualization: Matplotlib, Seaborn\n\nKey Findings:\n- Large jumps in energy, happiness/valence, danceability, and tempo tended to reduce transition quality.\n- Musical context mattered: key/mode/genre alignment (and sometimes artist similarity) often improved perceived smoothness.\n- A feature-based regression approach can predict transition quality well enough to rank transitions and flag problematic song pairs.\n\nConclusions:\n- Transition scoring is feasible with engineered audio features and supervised learning, and it provides a practical tool for playlist refinement.\n- The score remains influenced by listener subjectivity and dataset bias, so broader data/labels are important for stronger generalization.",
+  imagesFolder: "moodcurve",
+  links:{
+    "GitHub": "https://github.com/lov-pav/moodcurve"
   }
 });
 
