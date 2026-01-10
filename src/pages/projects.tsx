@@ -1,16 +1,16 @@
-//@ts-nocheck
 import '../css/projects.css'
 import { useSearchParams } from "react-router-dom"
 import { data, getImagesFromFolder } from "../projectData"
-import { HashLink } from 'react-router-hash-link';
-import Picture from '../components/picture';
 import { useEffect } from 'react';
-import Zoom from 'react-medium-image-zoom'
-import 'react-medium-image-zoom/dist/styles.css'
 import { GithubSolid, Web } from '../components/svg';
+import AnimatedBackground from '../components/AnimatedBackground';
+import Reveal from '../components/Reveal';
+import ProjectGallery from '../components/ProjectGallery';
+import { ArrowLeft, ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 function DisplayProject(){
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const queryParam = searchParams.get("q") ?? "";
     if(!queryParam){
         return(
@@ -34,21 +34,42 @@ function DisplayProject(){
     const images = getImagesFromFolder(query.imagesFolder);
     return(
         <>
-            <div className='section'>
-                <h1>{query.name}</h1>
-                <h2 id='topProject'>Images: <span>(click to open images)</span></h2>
-                <div className='project-images'>
-                    {images.map((imgSrc, index) => <Zoom classDialog='custom-zoom'>
-                        <Picture className="image" stretch = {true} src={imgSrc} alt={`Project ${query.name} image ${index + 1}`} key={index} />
-                        </Zoom>)}
+            <div className='projects-shell'>
+                <div className="container">
+                    <Reveal>
+                        <div className="project-header">
+                            <h1 className="gradient-text">{query.name}</h1>
+                        </div>
+                    </Reveal>
+
+                    <Reveal delay={0.05}>
+                        <div className="project-section-title">Images <span>(click image to zoom)</span></div>
+                        <ProjectGallery images={images} altBase={`Project ${query.name} image`} />
+                    </Reveal>
+
+                    {(query.links?.GitHub || query.links?.Live) && (
+                        <Reveal delay={0.08}>
+                            <div className="project-section-title">Links</div>
+                            <div className="project-links">
+                                {query.links?.GitHub && (
+                                    <a className="btn btn-primary" href={query.links.GitHub} target="_blank" rel="noreferrer">
+                                        <GithubSolid /> GitHub <ArrowUpRight size={18} />
+                                    </a>
+                                )}
+                                {query.links?.Live && (
+                                    <a className="btn" href={query.links.Live} target="_blank" rel="noreferrer">
+                                        <Web /> Live demo <ArrowUpRight size={18} />
+                                    </a>
+                                )}
+                            </div>
+                        </Reveal>
+                    )}
+
+                    <Reveal delay={0.1}>
+                        <div className="project-section-title">Description</div>
+                        <p className="project-description">{query.description}</p>
+                    </Reveal>
                 </div>
-                {query.links && <h2>Links:</h2>}
-                {query.links && <ul>
-                    {query.links.GitHub && <li><GithubSolid /> <a href={query.links.GitHub} target="_blank">GitHub Repository</a></li>}
-                    {query.links.Live && <li><Web /> <a href={query.links.Live} target="_blank">Live Demo</a></li>}
-                </ul>}
-                <h2>Description:</h2>
-                <p style={{whiteSpace: 'pre-wrap'}}>{query.description}</p>
             </div>
         </>
     )
@@ -66,9 +87,23 @@ export function ProjectPage(){
     }, []);
     return(
         <>
-            <nav>
-                <HashLink id = "back-link" to="/#projects"> {'<<'} Go Back</HashLink>
-                <p>Projects</p>
+            <AnimatedBackground variant="projects" />
+
+            <nav className="site-nav">
+                <div className="site-nav__inner">
+                    <Link
+                        className="nav-link nav-link--accent"
+                        id="back-link"
+                        to="/?section=projects"
+                    >
+                        <ArrowLeft size={18} /> Back
+                    </Link>
+                    <div className="brand" aria-label="Projects">
+                        <span className="brand__dot" aria-hidden="true" />
+                        <span>Projects</span>
+                    </div>
+                    <Link className="nav-link" to="/">Home</Link>
+                </div>
             </nav>
             <DisplayProject/>
         </>
