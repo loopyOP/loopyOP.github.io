@@ -169,10 +169,19 @@ body.page-projects {
     padding-top: 112px;
   }
 
+  body.page-projects #root {
+    padding-top: calc(var(--nav-h) + 12px);
+  }
+
   .site-nav__inner {
     gap: 10px;
     flex-wrap: wrap;
     justify-content: center;
+  }
+
+  body.page-projects .site-nav__inner {
+    flex-wrap: nowrap;
+    justify-content: space-between;
   }
 
   .site-nav {
@@ -180,9 +189,18 @@ body.page-projects {
     padding: 10px 0;
   }
 
+  body.page-projects .site-nav {
+    height: var(--nav-h);
+    padding: 0;
+  }
+
   .brand {
     flex: 1 1 100%;
     justify-content: center;
+  }
+
+  body.page-projects .brand {
+    flex: 0 1 auto;
   }
 
   .nav-links {
@@ -193,6 +211,7 @@ body.page-projects {
 
   .nav-link {
     padding: 8px 10px;
+    white-space: nowrap;
   }
 }
 
